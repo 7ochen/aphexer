@@ -7,8 +7,17 @@ const aphexer = require('./lib/afx/aphexFaceReplacer.js');
 const app = express();
 
 app.get('/', function(req, res) {
-    let query = req.query;
-    let imageHref = new URL(query.afx).href;
+    let afxQuery = req.query.afx;
+    console.log(`request received for ${afxQuery}`);
+
+    if (!afxQuery) return res.status(400).send('"afx" query string with valid image URI required, example: /?afx=http://example.com/photo.jpeg');
+
+    let imageHref;
+    try {
+        imageHref = new URL(afxQuery).href;
+    } catch(err) {
+        return res.sent(`Invalid URL: ${err.message}`);
+    }
 
     let mime_type;
     if (imageHref.endsWith('.jpeg') || imageHref.endsWith('.jpg')) {
