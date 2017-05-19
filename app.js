@@ -39,6 +39,6 @@ app.get('/', function(req, res) {
     });
 });
 
-let server = app.listen(3000, function() {
+let server = app.listen(process.env.PORT || 3001, function() {
     console.log(`Listening at ${server.address().address} ${server.address().port}`);
 });
