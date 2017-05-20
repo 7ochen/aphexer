@@ -18,6 +18,7 @@ RUN npm install --only=production
 RUN npm install -g pm2
 
 COPY lib ./lib
+COPY views ./views
 COPY app.js ./
 
 CMD pm2-docker app.js

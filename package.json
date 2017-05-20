@@ -18,6 +18,7 @@
   "homepage": "https://github.com/nts/aphexer#readme",
   "dependencies": {
     "express": "^4.15.3",
+    "express-formidable": "^1.0.0",
     "faced": "^1.2.0",
     "jimp": "^0.2.27",
     "path": "^0.12.7"
